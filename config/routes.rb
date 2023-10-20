@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'customers' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers' => 'customers#update'
-    get 'customers/confilm' => 'customers#confilm'
+    get 'customers/confirm' => 'customers#confirm'
     patch 'customers/withdraw' => 'customers#withdraw'
 
     resources :items, only: [:index, :show]
