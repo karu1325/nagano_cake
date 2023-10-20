@@ -9,22 +9,37 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="d-flex flex-column vh-100">
-    <header>
+    <header class="border-bottom border-dark">
       <nav class="navber navber-expand-lg">
-      <div class="container">
-        <h2  class="navber-brand m-4">
-          <%= link_to "LOGO", root_path, class:'px-5 py-0.5 text-dark border border-dark' %>
-        </h2>
-
+      <div class="container-fluid">
+        <div class="row my-auto">
+          <h2  class="navber-brand m-4">
+            <%= link_to "LOGO", root_path, class:'col-2 px-5 py-0.5 text-dark border border-dark' %>
+          </h2>
+          <% if customer_signed_in? %>
+            <div class="col-2 my-auto">ようこそ、<%= current_customer.last_name %>さん！</div>
+          <% end %>
+          <div class="col-6 offset-1 mr-0">
+              <% if customer_signed_in? %>
+                <%= link_to "マイページ", customers_path(current_customer), class:'btn btn-sm border border-secondary' %>
+                <%= link_to "商品一覧", items_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "カート", cart_items_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "ログアウト", destroy_customer_session_path, class:'btn btn-sm border border-secondary' %>
+              <% else %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
       </nav>
     </header>
-    <main>
+    <main class="py-4">
     <div class="container">
       <%= yield %>
     </div>
     </main>
+
+    <footer class="border-top border-dark"></footer>
   </body>
 </html>
