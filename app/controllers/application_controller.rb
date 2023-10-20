@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    root_path
+    case resource
+    when Customer
+      root_path
+    when Admin
+      admin_path
+    end
   end
 
   protected

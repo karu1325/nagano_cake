@@ -10,9 +10,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header>
+      <nav class="navber navber-expand-lg">
+      <div class="container">
+        <h2  class="navber-brand m-4">
+          <%= link_to "LOGO", root_path, class:'px-5 py-0.5 text-dark border border-dark' %>
+        </h2>
+
+      </div>
+      </nav>
+    </header>
+    <main>
     <div class="container">
-    <%= yield %>
+      <%= yield %>
     </div>
+    </main>
   </body>
 </html>
