@@ -25,8 +25,12 @@
                 <%= link_to "マイページ", customers_path(current_customer), class:'btn btn-sm border border-secondary' %>
                 <%= link_to "商品一覧", items_path, class:'btn btn-sm border border-secondary' %>
                 <%= link_to "カート", cart_items_path, class:'btn btn-sm border border-secondary' %>
-                <%= link_to "ログアウト", destroy_customer_session_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:'btn btn-sm border border-secondary' %>
               <% else %>
+                <%= link_to "About", about_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "商品一覧", items_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "新規登録", new_customer_registration_path, class:'btn btn-sm border border-secondary' %>
+                <%= link_to "ログイン", new_customer_session_path, class:'btn btn-sm border border-secondary' %>
               <% end %>
             </div>
           </div>
