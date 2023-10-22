@@ -1,3 +1,4 @@
+<div class="container">
 <h2>新規会員登録</h2>
 
 <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class:'new_customer' do |f| %>
@@ -58,3 +59,4 @@
 <div class="nav">既に登録済みの方</div>
 <%#<%= render "public/shared/links" %>
 <div class"link_nav"><%= link_to'こちら', new_customer_session_path %>からログインしてください。</div>
+</div>
