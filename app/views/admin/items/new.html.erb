@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="title mx-5 my-3">商品新規登録</div>
+    <div class="row no-gutters">
+      <div class="col-lg-12  d-flex justify-content-center">
+        <%= form_with model:@item do |f| %>
+          <div class="field row my-2">
+            <label for="inputImage" class="col-lg-4 col-form-label">商品画像</label>
+            <div class="col-lg-7">
+              <%= f.file_field :image, accept:"image/*", id:'inputImage' %>
+            </div>
+          </div>
+
+          <div class="field row my-2">
+            <label for="inputName" class="col-lg-4 col-form-label">商品名</label>
+            <div class="col-lg-7">
+              <%= f.text_field :name, class:"form-control", id:"inputName", placeholder:'商品名' %>
+            </div>
+          </div>
+
+          <div class="field row my-2">
+            <label for="inputIntroduction" class="col-lg-4 col-form-label">商品説明</label>
+            <div class="col-lg-7">
+              <%= f.text_area :introduction, class:"form-control", id:"inputIntroduction",
+              placeholder:"ここに説明文を記述します。" %>
+            </div>
+          </div>
+
+          <div class="field row my-2">
+            <label for="inputGenre" class="col-lg-4 col-form-label">ジャンル</label>
+            <div class="col-lg-7">
+              <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt:"--選択してください--"} %>
+            </div>
+          </div>
+
+          <div class="field row my-2">
+            <label for="inputPrice" class="col-lg-4 col-form-label">税抜価格</label>
+            <div class="col-lg-7">
+              <%= f.text_field :price, class:"form-control", id:"inputPrice", placeholder:"1000" %>
+            </div>
+            <label for="inputPrice" class="col-form-label">円</label>
+          </div>
+
+          <div class="field row my-2">
+            <label for="inputStatus" class="col-lg-5 col-form-label">販売ステータス</label>
+            <div class="col-lg-7">
+              <%= f.radio_button :is_sale, true, id:"inputStatusTrue" %>
+              <label for="inputStatusTrue" class="col-form-label">販売中</label>
+              <%= f.radio_button :is_sale, false, id:"inputStatusFalse" %>
+              <label for="inputStatusFalse" class="col-form-label">販売停止中</label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</div>
