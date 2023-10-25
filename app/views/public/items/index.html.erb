@@ -1,0 +1,39 @@
+<div class="container mx-1">
+  <div class="row no-gutters">
+    <div class="col-lg-2">
+      <div class="sideber px-2">
+      <table class="border border-dark">
+        <thead>
+          <tr>
+            <th scope="col" class="px-4">ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <%# <% form_with each do
+        <div class="border-top-0 border-dark"></div>%>
+      </table>
+      </div>
+    </div>
+
+    <div class="col-10">
+      <h5 class="title">商品一覧</h5>
+      <% @items.each do |item| %>
+      <div class="row row-cols-4">
+        <div class="col">
+          <%= link_to item_path(item.id) do %>
+            <div class="list-item text-dark">
+              <p><%= image_tag item.get_image(50,50), class:"card-img" %></p>
+              <p><b><%= item.name %></b></p>
+              <p><b>￥<%= item.price %></b></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+      <div class="page d-flex justify-content-center">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
