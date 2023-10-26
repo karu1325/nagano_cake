@@ -18,19 +18,19 @@
 
     <div class="col-10">
       <h5 class="title">商品一覧</h5>
+      <div class="row">
       <% @items.each do |item| %>
-      <div class="row row-cols-4">
-        <div class="col">
+        <div class="col-3">
           <%= link_to item_path(item.id) do %>
             <div class="list-item text-dark">
-              <p><%= image_tag item.get_image(50,50), class:"card-img" %></p>
+              <%= image_tag item.image, class:"card-img", size: "150x150" %>
               <p><b><%= item.name %></b></p>
               <p><b>￥<%= item.price %></b></p>
             </div>
           <% end %>
         </div>
-      </div>
       <% end %>
+      </div>
       <div class="page d-flex justify-content-center">
         <%= paginate @items %>
       </div>
