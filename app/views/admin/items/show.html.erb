@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <th scope="row">税込価格<br>(税抜価格)</th>
-            <td><strong><%= @item.add_tax_price.to_s(:dalimited) %>
+            <td><strong><%= @item.with_tax_price.to_s(:dalimited) %>
                 (<%= @item.price %>)</strong>円
             </td>
           </tr>
@@ -42,4 +42,4 @@
       </div>
     </div>
   </div>
-</div>どういうときに
+</div>
