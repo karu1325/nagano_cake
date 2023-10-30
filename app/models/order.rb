@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :order
   has_many :order_details, dependent: :destroy
-  
+
 
   enum status: {
     waiting: 0,
@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 
   enum payment_method: {
     credit: 0,
-    bank: 1
+    transfer: 1
   }
 
 end
