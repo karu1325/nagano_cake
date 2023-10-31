@@ -28,7 +28,8 @@ class Public::OrdersController < ApplicationController
     else
       render 'new'
     end
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
+    #binding.pry
   end
 
   def create
