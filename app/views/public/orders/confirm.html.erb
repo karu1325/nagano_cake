@@ -22,13 +22,62 @@
             <td><%= cart_item.amount %></td>
             <td><%= cart_item.subtotal %> </td>
           </tr>
+          <% @total += cart_item.subtotal %>
         <% end %>
         </tboby>
       </table>
     </div>
 
     <div class="col-4">
-
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">送料</th>
+            <% @order.postage = 800 %>
+            <td><%= @order.postage %></td>
+          </tr>
+          <tr>
+            <th scope="row">商品合計</th>
+            <td><%= @total %></td>
+          </tr>
+          <tr>
+            <th scope="row">請求金額</th>
+            <% @order.billing_amount = @order.postage + @total %>
+            <td><%= @order.billing_amount %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-10">
+      <table class="table table-borderless">
+        <tr>
+          <th class="col-2">支払い方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th class="col-2">お届け先</th>
+          <td class="col-8">〒
+            <%= @order.postal_code %>
+            <%= @order.address %>
+            <%= @order.name %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.hidden_field :customer_id %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.hidden_field :billing_amount %>
+      <%= f.hidden_field :postage %>
+      <%= f.hidden_field :postal_code %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :states %>
+      <%= f.submit"注文を確定する", class:'btn btn-success' %>
+    <% end %>
   </div>
 </div>
