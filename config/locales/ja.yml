@@ -10,6 +10,12 @@ ja:
       payment_method:
         credit: "クレジットカード"
         transfer: "銀行振込"
+    order_detail:
+      manufacture_status:
+        impossible: "着手不可"
+        waiting: "製作待ち"
+        manufacturing: "製作中"
+        finish: "製作完了"
   activerecord:
     errors:
       messages:
