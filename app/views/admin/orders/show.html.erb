@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <th class="col-3">注文ステータス</th>
-          <td><%= form_with model: @order, url: admin_customer_path, method: :patch do |f| %>
+          <td><%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
                 <%= f.select :status, Order.statuses_i18n.invert %>
                 <%= f.submit "更新", class:'btn btn-success' %>
               <% end %>
@@ -53,7 +53,7 @@
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.subtotal %></td>
             <td>
-              <%= form_with model: order_detail, url: admin_orders_detail_path, method: :patch do |f| %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
                 <%= f.select :manufacture_status, OrderDetail.manufacture_statuses_i18n.invert %>
                 <%= f.submit "更新", class:'btn btn-success' %>
               <% end %>
@@ -67,7 +67,15 @@
       <table class="table">
         <tr>
           <th scope="row">商品合計</th>
-          <td><%= @total %></td>
+          <td><%= @total %>円</td>
+        </tr>
+        <tr>
+          <th scope="row">送料</th>
+          <td><%= @order.postage %>円</td>
+        </tr>
+        <tr>
+          <th scope="row">請求金額</th>
+          <td><strong><%= @order.billing_amount %>円</strong></td>
         </tr>
       </table>
     </div>
