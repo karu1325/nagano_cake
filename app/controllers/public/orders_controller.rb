@@ -9,6 +9,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.customer_id = current_customer.id
+    @order_details = @order.order_details.all
+    @total = @order_details.sum {|order_detail| order_detail.subtotal}
   end
 
   def confirm
@@ -50,6 +54,9 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_complete_path
   end
 
+  def complete
+  end
+  
   private
 
   def order_params
