@@ -4,17 +4,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def index
-    @orders = current_customer.orders.all
-  end
-
-  def show
-    @order = Order.find(params[:id])
-    @order.customer_id = current_customer.id
-    @order_details = @order.order_details.all
-    @total = @order_details.sum {|order_detail| order_detail.subtotal}
-  end
-
   def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -34,6 +23,7 @@ class Public::OrdersController < ApplicationController
       render 'new'
     end
     @cart_items = current_customer.cart_items.all
+    @order.customer_id = current_customer.id
     @total = 0
   end
 
@@ -56,7 +46,18 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
+
+  def index
+    @orders = current_customer.orders.all
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order.customer_id = current_customer.id
+    @order_details = @order.order_details.all
+    @total = @order_details.sum {|order_detail| order_detail.subtotal}
+  end
+
   private
 
   def order_params
