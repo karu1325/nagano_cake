@@ -15,6 +15,6 @@ class Item < ApplicationRecord
 
   def self.looks(item_name)
     return Item.all unless item_name
-    Item.where("name LIKE?", "%#{item_name}%")
+    Item.where("name LIKE ?", "%#{item_name}%")
   end
 end

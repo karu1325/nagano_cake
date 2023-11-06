@@ -14,7 +14,6 @@
           </thead>
           <tbody>
             <% @items.each do |item| %>
-              <% if params[:item_name].present? && item.name.include?(params[:item_name]) %>
               <tr>
                 <th scope="row"><%= item.id %></th>
                 <td><%= link_to item.name, admin_item_path(item.id), class:'text-dark' %></td>
@@ -27,20 +26,6 @@
                     <% end %>
                 </td>
               </tr>
-              <% elsif params[:item_name].blank? %>
-                <tr>
-                <th scope="row"><%= item.id %></th>
-                <td><%= link_to item.name, admin_item_path(item.id), class:'text-dark' %></td>
-                <td><%= item.price %></td>
-                <td><%= item.genre.name %></td>
-                <td><% if item.is_sale %>
-                      <p class="text-success"><strong>販売中</strong></p>
-                    <% elsif %>
-                      <p class="text-muted"><strong>販売停止中</strong></p>
-                    <% end %>
-                </td>
-              </tr>
-              <% end %>
             <% end %>
           </tbody>
         </table>

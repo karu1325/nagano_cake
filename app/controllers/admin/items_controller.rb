@@ -8,11 +8,10 @@ class Admin::ItemsController < ApplicationController
   def index
     @item_name = params[:item_name]
     if @item_name.present?
-      @items = Item.looks(params[:item_name])
+      @items = Item.looks(@item_name).page(params[:page])
     else
-      @items = Item.all
+      @items = Item.page(params[:page])
     end
-    @items = Item.page(params[:page])
   end
 
   def show
