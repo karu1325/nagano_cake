@@ -13,4 +13,8 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  def self.looks(item_name)
+    return Item.all unless item_name
+    Item.where("name LIKE?", "%#{item_name}%")
+  end
 end

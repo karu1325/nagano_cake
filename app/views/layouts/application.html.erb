@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/09b1dd4dc3.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -39,6 +40,25 @@
                 <%= link_to "ログイン", new_customer_session_path, class:'btn btn-sm border border-secondary' %>
               <% end %>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <% if admin_signed_in? %>
+              <%= form_with url: admin_items_path, method: :get do |f| %>
+                <%= f.text_field :item_name, palceholder:"Search" %>
+                <%= button_tag type: "submit", class:"btn" do %>
+                  <i class="fas fa-magnifying-glass"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= form_with url: items_path, method: :get do |f| %>
+                <%= f.text_field :item_name, placeholder:"Search" %>
+                <%= button_tag type: "submit", class:"btn" do %>
+                  <i class="fas fa-magnifying-glass"></i>
+                <% end %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>
