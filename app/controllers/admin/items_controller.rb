@@ -6,9 +6,9 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @item_name = params[:item_name]
-    if @item_name.present?
-      @items = Item.looks(@item_name).page(params[:page])
+    @items = Item.all
+    if params[:item_name].present?
+      @items = Item.where("name LIKE ?", "%#{params[:item_name]}%").page(params[:page])
     else
       @items = Item.page(params[:page])
     end

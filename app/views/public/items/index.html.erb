@@ -17,7 +17,10 @@
     </div>
 
     <div class="col-10">
-      <h5 class="title">商品一覧</h5>
+      <div class="row">
+        <h5 class="title"><strong>商品一覧</strong></h5>
+        <div class="count">（全<%= @items.total_count %>件）</div>
+      </div>
       <div class="row">
       <% @items.each do |item| %>
         <div class="col-3">
