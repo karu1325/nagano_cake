@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
 
   def index
     @addresses = Address.all
-    @address = Address.new(address_params)
+    @address = Address.new
   end
 
   def edit
@@ -15,6 +15,7 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path(@address)
     else
+      @addresses = Address.all
       render :index
     end
   end
@@ -27,7 +28,7 @@ class Public::AddressesController < ApplicationController
 
   def destroy
     @address = Address.find(params[:id])
-    @address.destory
+    @address.destroy
     redirect_to addresses_path
   end
 
