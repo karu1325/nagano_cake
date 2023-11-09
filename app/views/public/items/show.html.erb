@@ -1,27 +1,13 @@
 <div class="container mx-1">
   <div class="row no-gutters">
-    <div class="col-lg-2">
-      <div class="sideber px-2">
-      <table class="border border-dark">
-        <thead>
-          <tr>
-            <th scope="col" class="px-4">ジャンル検索</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <%# <% form_with each do
-        <div class="border-top-0 border-dark"></div>%>
-      </table>
-      </div>
-    </div>
+    <%= render'search', genres: @genres %>
 
     <div class="col-10">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3 ml-4">
           <%= image_tag @item.image, size: "200x200" %>
         </div>
-        <div class="col-5">
+        <div class="col-5 ml-4">
           <p class="fs-4 fw-bolder"><%= @item.name %></p>
           <p class="fs-6 fw-medium"><%= @item.introduction %></p>
           <p class="fs-4 fw-semibold"><strong>￥<%= @item.with_tax_price.to_s(:adlimited) %></strong>(税込)</p>

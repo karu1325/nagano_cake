@@ -1,19 +1,6 @@
 <div class="container-fluid">
 <div class="row no-gutters">
-  <div class="col-2">
-    <div class="sideber px-2">
-    <table class="border border-dark">
-      <thead>
-        <tr>
-          <th scope="col" class="px-4">ジャンル検索</th>
-        </tr>
-      </thead>
-      <tbody>
-       
-      </tbody>
-    </table>
-    </div>
-  </div>
+  <%= render 'public/items/search', genres: @genres %>
 
   <div class="main-content col-10 mt-2">
     <div class="mainber col-9 ml-4">
