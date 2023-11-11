@@ -46,7 +46,7 @@
             <div class="col-auto ml-auto text-right">
               <% if admin_signed_in? %>
                 <%= form_with url: admin_items_path, method: :get do |f| %>
-                  <%= f.text_field :item_name, palceholder:"Search" %>
+                  <%= f.text_field :item_name, placeholder:"Search" %>
                   <%= button_tag type: "submit", class:"btn" do %>
                     <i class="fas fa-magnifying-glass"></i>
                   <% end %>

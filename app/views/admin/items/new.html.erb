@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title mx-5 my-3">商品新規登録</div>
     <div class="row no-gutters">
-      <div class="col-lg-12  d-flex justify-content-center">
+      <div class="col-lg-12 d-flex justify-content-center">
         <%= form_with model:@item, url: "/admin/items", method: :post do |f| %>
           <div class="field row my-2">
             <label for="inputImage" class="col-lg-4 col-form-label">商品画像</label>
@@ -12,15 +12,15 @@
 
           <div class="field row my-2">
             <label for="inputName" class="col-lg-4 col-form-label">商品名</label>
-            <div class="col-lg-7">
+            <div class="col-lg-7 pr-0">
               <%= f.text_field :name, class:"form-control", id:"inputName", placeholder:'商品名' %>
             </div>
           </div>
 
           <div class="field row my-2">
             <label for="inputIntroduction" class="col-lg-4 col-form-label">商品説明</label>
-            <div class="col-lg-7">
-              <%= f.text_area :introduction, class:"form-control", id:"inputIntroduction",
+            <div class="col-lg-7 pr-0">
+              <%= f.text_area :introduction, class:"form-control pb-5", id:"inputIntroduction",
               placeholder:"ここに説明文を記述します。" %>
             </div>
           </div>
@@ -34,10 +34,10 @@
 
           <div class="field row my-2">
             <label for="inputPrice" class="col-lg-4 col-form-label">税抜価格</label>
-            <div class="col-lg-7">
+            <div class="col-lg-7 pr-0">
               <%= f.text_field :price, class:"form-control", id:"inputPrice", placeholder:"1000" %>
             </div>
-            <label for="inputPrice" class="col-form-label">円</label>
+            <p class="col-form-label">円</p>
           </div>
 
           <div class="field row my-2">

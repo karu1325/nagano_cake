@@ -1,5 +1,12 @@
 <div class="container">
-  <h5 class="title">商品一覧</h5>
+  <div class="row m-3">
+    <h5 class="title">商品一覧</h5>
+    <div class="new-link col-auto ml-auto">
+      <%= link_to new_admin_item_path, class:'btn rounded-circle p-2 shadow-sm', method: :get do %>
+        <i class="fas fa-plus fa-lg"></i>
+      <% end %>
+    </div>
+  </div>
     <div class="row no-gutters">
       <div class="col">
         <table class="table">
