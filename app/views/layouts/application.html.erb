@@ -54,9 +54,10 @@
               <% else %>
                 <%= form_with url: items_path, method: :get do |f| %>
                   <%= f.text_field :item_name, placeholder:"Search" %>
-                  <%= button_tag type: "submit", class:"btn" do %>
+                  <span><%= button_tag type: "submit", class:"btn" do %>
                     <i class="fas fa-magnifying-glass"></i>
                   <% end %>
+                  </span>
                 <% end %>
               <% end %>
             </div>

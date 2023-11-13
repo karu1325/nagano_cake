@@ -11,7 +11,7 @@
           <h5><strong><%= @item.name %></strong></h5>
           <p class="fs-6 fw-medium"><%= @item.introduction %></p>
           <br>
-          <p><strong>￥<%= @item.with_tax_price.to_s(:delimited) %></strong>(税込)</p>
+          <h5><strong>￥<%= @item.with_tax_price.to_s(:delimited) %></strong><span class="h6">(税込)</span></h5>
           <div class="form">
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
             <%= f.select :amount, *[1..10], {prompt:"個数選択"} %>
